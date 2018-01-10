@@ -1,26 +1,31 @@
 
 public class BilliardLogicSupport {
 
-	int currentGameNumber=0;
-	int gameWinRecordArray[];
+	int gameCount = 10;
+	int currentGameNumber;
+	int[] gameWinRecordArray = new int[gameCount];
+	int[] ballOnTableArray= new int[16];
+	int[] ballPocketArray= new int[16];
+	int[] currentInningArray= new int[gameCount];
+	int[] playerOneStats= new int[8];
+	int[] playerTwoStats= new int[8];
+	int currentInning;
+	int turnCounter;
+	int playerOneTargetBalls;
+	int playerTwoTargetBalls;
 	
-	int ballOnTableArray[];
-	int ballPocketArray[];
-	
-	int turnCounter=0;
-	
-	int currentInning=0;
-	int currentInningArray[];
-	
-	int playerOneTargetBalls = 0;
-	int playerTwoTargetBalls = 0;
-	
-	int playerOneStats[];//index:	0 = balls made , 1 = scratches, 2 misses, 3 defensive shots 	
-	int playerTwoStats[];//			4 = forfeits, 5 = automatic losses, 6 = games won,
-						
+				
 		
 	public BilliardLogicSupport() {
-		// TODO Auto-generated constructor stub
+			gameCount = 10;
+			
+		    currentGameNumber = 0;
+		    
+		    for (int i = 0; i < gameCount; i++) {
+		    	gameWinRecordArray[i] = 0;
+		    }
+		    
+			
 	}
 	
 	public void exitGame() {
