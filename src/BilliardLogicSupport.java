@@ -95,8 +95,71 @@ public class BilliardLogicSupport {
 	public void callShot() {
 		
 	}
+	
+	public void cueBall() {
+		
+	}
 
+	public void oneBall() {
+		
+	}
 
+	public void twoBall() {
+		
+	}
+
+	public void threeBall() {
+		
+	}
+	
+	public void fourBall() {
+		
+	}
+	
+	public void fiveBall() {
+		
+	}
+	
+	public void sixBall() {
+		
+	}
+	
+	public void sevenBall() {
+		
+	}
+	
+	public void eightBall() {
+		
+	}
+	
+	public void nineBall() {
+		
+	}
+	
+	public void tenBall() {
+		
+	}
+	
+	public void elevenBall() {
+		
+	}
+	
+	public void twelveBall() {
+		
+	}
+	
+	public void thirteenBall() {
+		
+	}
+	
+	public void fourteenBall() {
+		
+	}
+	
+	public void fifteenBall() {
+		
+	}
+	
 	
 
 
