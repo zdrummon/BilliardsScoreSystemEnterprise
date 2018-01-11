@@ -12,9 +12,7 @@ public class BilliardLogicSupport {
 	int currentInning;
 	int turnCounter;
 	int playerOneTargetBalls;
-	int playerTwoTargetBalls;
-	
-				
+	int playerTwoTargetBalls;					
 		
 	public BilliardLogicSupport() {
 			gameCount = 10;
@@ -23,9 +21,7 @@ public class BilliardLogicSupport {
 		    
 		    for (int i = 0; i < gameCount; i++) {
 		    	gameWinRecordArray[i] = 0;
-		    }
-		    
-			
+		    }			
 	}
 	
 	public void exitGame() {
@@ -159,25 +155,4 @@ public class BilliardLogicSupport {
 	public void fifteenBall() {
 		
 	}
-	
-	
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
