@@ -34,11 +34,6 @@ public class Main extends Application  {
 		launch(arg);		
 	}
 	
-	
-	/*
-	*/
-	
-
 //____________________START______________________________________________________________________________________________
 	@Override
 	public void start(Stage BSStage) throws Exception {

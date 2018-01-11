@@ -1,4 +1,3 @@
-
 public class BilliardLogicSupport {
 
 	int gameCount = 10;
