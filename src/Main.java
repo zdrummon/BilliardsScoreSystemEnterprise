@@ -1,10 +1,10 @@
-//________________________TITLE________________________________________
-/*Billiard System v.0002
-*coded by Trevor Haggerty @ Zachary Drummond
-*	cesismalon@gmail.com
-*	zdrummon@gmail.com
+//____________________TITLE______________________________________________________________________________________________
+/*Billiard System v.0003
+*coded by
+*	Trevor Haggerty - cesismalon@gmail.com
+*	Zachary Drummond - zdrummon@gmail.com
 * */
-//________________________INCLUDES_____________________________________
+//____________________INCLUDES___________________________________________________________________________________________
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javafx.application.*;
@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+//____________________MAIN_______________________________________________________________________________________________
 public class Main extends Application  {
 	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -37,8 +38,8 @@ public class Main extends Application  {
 	/*
 	*/
 	
-	
-	//________________________Start_____________________________________
+
+//____________________START______________________________________________________________________________________________
 	@Override
 	public void start(Stage BSStage) throws Exception {
 		BSWindow = BSStage;
@@ -47,14 +48,14 @@ public class Main extends Application  {
 		BSWindow.setTitle("Billiard Score System Enterprise - ObserVR 2018");
 	
 		int ballRowHeight = windowHeight / 8 - 15;		
-		
-		//-------------------START-BUTTON--------------------------------
+	
+//-------------------START-BUTTON----------------------------------------------------------------------------------------
 		Button startButton = new Button("click to start score keeping");
 		startButton.setOnAction(e -> BSWindow.setScene(BSInterfaceScene));
 		startButton.setPrefSize(buttonSizeWidth * 2, buttonSizeHeight);
 		startButton.relocate(windowWidth / 2 - buttonSizeWidth, windowHeight / 2 - buttonSizeHeight / 2);
-		
-		//-------------------EXIT-BUTTON---------------------------------
+	
+//-------------------EXIT-BUTTON-----------------------------------------------------------------------------------------	
 		Button exitButton = new Button("click to exit program");
 		exitButton.setOnAction(e ->{
 		BSWindow.close();
@@ -63,13 +64,13 @@ public class Main extends Application  {
 		exitButton.setPrefSize(buttonSizeWidth * 2, buttonSizeHeight);
 		exitButton.relocate(windowWidth / 2 - buttonSizeWidth, windowHeight / 2 + buttonSizeHeight / 2);
 		
-		//-------------------START-SCREEN-LAYOUT-------------------------
+//-------------------START-SCREEN-LAYOUT---------------------------------------------------------------------------------
 		Pane BSStartLayout = new Pane();
 		BSStartLayout.getChildren().addAll(startButton,exitButton);
 		BSStartScene = new Scene(BSStartLayout, windowWidth, windowHeight);
 		BSWindow.setScene(BSStartScene);
-				
-		//-------------------SCORE-KEEPING-SCREEN-COMPONENTS-------------	
+			
+//-------------------SCORE-KEEPING-SCREEN-COMPONENTS---------------------------------------------------------------------	
 		Button breakButton = new Button("break");
 		Button defShotButton = new Button("defense");
 		Button ballPocketed = new Button("pocketed");
@@ -93,7 +94,7 @@ public class Main extends Application  {
 		Button fourteenBallButton = new Button("14 Ball");
 		Button fifteenBallButton = new Button("15 Ball");					
 		
-		//-------------------BREAK-BUTTON--------------------------------
+//-------------------BREAK-BUTTON----------------------------------------------------------------------------------------
 		breakButton.setOnAction(e ->{
 			BSLogic.breakTriangle();
 			breakButton.setVisible(false);
@@ -102,7 +103,7 @@ public class Main extends Application  {
 		breakButton.setPrefSize(buttonSizeWidth, buttonSizeHeight);
 		breakButton.relocate(windowWidth / 2 - buttonSizeWidth / 2, windowHeight / 2 - buttonSizeHeight * 5 / 2 - 10);
 		
-		//-------------------BALL-POCKETED--------------------------------		
+//-------------------BALL-POCKETED---------------------------------------------------------------------------------------		
 		ballPocketed.setOnAction(e ->{
 			BSLogic.modifyBallArray();
 		});
@@ -110,28 +111,28 @@ public class Main extends Application  {
 		ballPocketed.setPrefSize(buttonSizeWidth, buttonSizeHeight);
 		ballPocketed.relocate(windowWidth / 2 - buttonSizeWidth / 2, windowHeight / 2 - buttonSizeHeight * 3 / 2 - 10);
 				
-		//-------------------DEFENSIVE-SHOT-BUTTON----------------------------------
+//-------------------DEFENSIVE-SHOT-BUTTON-------------------------------------------------------------------------------
 		defShotButton.setVisible(false);
 		defShotButton.setOnAction(e -> BSLogic.defShot());
 		defShotButton.setPrefSize(buttonSizeWidth, buttonSizeHeight);
 		defShotButton.relocate(windowWidth / 2 - buttonSizeWidth / 2, windowHeight / 2 - buttonSizeHeight / 2 - 10);
-		
-		//-------------------MISS-BUTTON----------------------------------
+
+//-------------------MISS-BUTTON-----------------------------------------------------------------------------------------
 		missButton.setOnAction(e -> BSLogic.missShot());
 		missButton.setPrefSize(buttonSizeWidth, buttonSizeHeight);
 		missButton.relocate(windowWidth / 2 - buttonSizeWidth / 2, windowHeight / 2 + buttonSizeHeight / 2 - 10);
-		
-		//-------------------FOUL-BUTTON----------------------------------
+	
+//-------------------FOUL-BUTTON-----------------------------------------------------------------------------------------
 		foulButton.setOnAction(e -> BSLogic.foulShot());
 		foulButton.setPrefSize(buttonSizeWidth, buttonSizeHeight);
 		foulButton.relocate(windowWidth / 2 - buttonSizeWidth / 2, windowHeight / 2 + buttonSizeHeight * 3 / 2 - 10);
-				
-		//-------------------FORFEIT-BUTTON-----------------------------------------
+			
+//-------------------FORFEIT-BUTTON--------------------------------------------------------------------------------------
 		forfeitButton.setOnAction(e -> BSLogic.forfeit());
 		forfeitButton.setPrefSize(buttonSizeWidth / 2, buttonSizeHeight / 2);
 		forfeitButton.relocate(windowWidth / 2 - buttonSizeWidth / 4, windowHeight - buttonSizeHeight / 2 - 10);
 		
-		//-------------------BALL-BUTTONS--------------------------------------------	
+//-------------------BALL-BUTTONS----------------------------------------------------------------------------------------	
 		cueBallButton.setOnAction(e -> BSLogic.cueBall());
 		cueBallButton.setPrefSize(buttonSizeWidth / 2, buttonSizeHeight / 2);
 		cueBallButton.relocate(windowWidth / 2 - buttonSizeWidth / 4, ballRowHeight - buttonSizeHeight / 2 - 10);
@@ -196,11 +197,11 @@ public class Main extends Application  {
 		fifteenBallButton.setPrefSize(buttonSizeWidth / 2, buttonSizeHeight / 2);
 		fifteenBallButton.relocate(windowWidth / 2 + (windowWidth / 16 * 7) - buttonSizeWidth / 4 + 10, ballRowHeight);
 		
-		//-------------------SCORE-KEEPING-SCREEN-LAYOUT-----------------
+//-------------------SCORE-KEEPING-SCREEN-LAYOUT-------------------------------------------------------------------------
 		Pane BSInterfaceLayout = new Pane();
 		
-		BSInterfaceLayout.getChildren().addAll( breakButton,foulButton,missButton,defShotButton,
-												forfeitButton,ballPocketed, cueBallButton, oneBallButton, 
+		BSInterfaceLayout.getChildren().addAll( breakButton, foulButton, missButton, defShotButton,
+												forfeitButton, ballPocketed, cueBallButton, oneBallButton, 
 												twoBallButton, threeBallButton, fourBallButton, fiveBallButton,
 												sixBallButton, sevenBallButton, eightBallButton, nineBallButton,
 												tenBallButton, elevenBallButton, twelveBallButton,
@@ -210,5 +211,3 @@ public class Main extends Application  {
 		BSStage.show(); 
 	}	
 }
-
-
