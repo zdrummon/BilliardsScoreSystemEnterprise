@@ -18,19 +18,22 @@ public class BSSE {
 	int windowWidth = (int) screenSize.getWidth() / 2;
 	
 	Pane StartSceneLayout = new Pane();
-	Scene StartScene = new Scene(StartSceneLayout, windowWidth, windowHeight);	
+	Scene StartScene = new Scene(StartSceneLayout, windowWidth, windowHeight);
 	Stage MainStage = new Stage();
+	EventLog Logger = new EventLog();
 	
 	public BSSE() {}
 	
 	public void makeMainStage() {
 		
-		//TODO Logger scoping
-		
 		//TEST OBJECTS
-		Button testButton = new Button("this is a test");
+		Button testButton = new Button("test exit button");
 		
 		testButton.relocate(0, 0);
+		testButton.setOnAction(e -> {
+			MainStage.close();
+			Logger.logEvent("end program");	
+		});
 		
 		StartSceneLayout.getChildren().addAll(testButton);
 		MainStage.setScene(StartScene);
