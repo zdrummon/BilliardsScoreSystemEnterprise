@@ -13,6 +13,18 @@ public class BilliardLogicSupport {
 	int[] currentInningArray = new int[totalGameCount];
 	int[] playerOneStats = new int[10];
 	int[] playerTwoStats = new int[10];
+	/* 0 = sets played
+	 * 1 = set won
+	 * 2 = games played
+	 * 3 = games won
+	 * 4 = shots taken total
+	 * 5 = innings played
+	 * 6 = defense shots taken
+	 * 7 = miss shots taken
+	 * 8 = scratch shots taken
+	 * 9 = foul shots taken
+	 */
+	
 	int currentInning = 0;
 	int playerTurn = 1;
 	int playerOneTargetBalls = 0;
@@ -181,6 +193,28 @@ public class BilliardLogicSupport {
 			}
 		}	
 		
+		if (ballOnTableArray[1] == 1 && ballOnTableArray[2] == 1 && ballOnTableArray[3] == 1 && 
+			ballOnTableArray[4] == 1 && ballOnTableArray[5] == 1 && ballOnTableArray[6] == 1 && 
+			ballOnTableArray[7] == 1 && playerOneTargetBalls == 1 && playerTurn == 1) {
+				playerOneFinalShot = true;
+		}
+		if (ballOnTableArray[9] == 1 && ballOnTableArray[10] == 1 && ballOnTableArray[11] == 1 && 
+			ballOnTableArray[12] == 1 && ballOnTableArray[13] == 1 && ballOnTableArray[14] == 1 && 
+			ballOnTableArray[15] == 1 && playerOneTargetBalls == 2 && playerTurn == 1) {
+				playerOneFinalShot = true;
+		}
+		if (ballOnTableArray[1] == 1 && ballOnTableArray[2] == 1 && ballOnTableArray[3] == 1 && 
+			ballOnTableArray[4] == 1 && ballOnTableArray[5] == 1 && ballOnTableArray[6] == 1 && 
+			ballOnTableArray[7] == 1 && playerTwoTargetBalls == 1 && playerTurn == 2) {
+				playerTwoFinalShot = true;
+			}
+			
+		if (ballOnTableArray[9] == 1 && ballOnTableArray[10] == 1 && ballOnTableArray[11] == 1 && 
+			ballOnTableArray[12] == 1 && ballOnTableArray[13] == 1 && ballOnTableArray[14] == 1 && 
+			ballOnTableArray[15] == 1 && playerTwoTargetBalls == 2 && playerTurn == 2) {
+				playerTwoFinalShot = true;
+		}
+			
 		if (takeAnotherShot == false && triangleBreak == false) {
 			switchTurn();
 		} else {
@@ -202,19 +236,17 @@ public class BilliardLogicSupport {
 	}
 	
 	public void scratchShot() {
-		if (playerTurn == 1 ) {
+		if (playerTurn == 1) {
 			playerOneStats[8] = ++playerOneStats[8];
 			eventLog("scratchShot method called.");
 			eventLog("the player has scratched "+ playerOneStats[8] + " shots");
 			++shotsTaken;
-			switchTurn();
 		
 		} else {
 			playerTwoStats[8] = ++playerTwoStats[8];
 			eventLog("scratchShot method called.");
 			eventLog("the player has scratched "+ playerTwoStats[8] + " shots");
-			++shotsTaken;
-			switchTurn();			
+			++shotsTaken;	
 		}
 	}
 	
@@ -315,10 +347,12 @@ public class BilliardLogicSupport {
 		if (playerTurn == 1) {
 			gameWinRecordArray[currentGameNumber] = 1;
 			eventLog("playerOne set to victor of game number " + currentGameNumber);
+			playerOneStats[3]++;
 			restartGame = true;
 		} else {
 			gameWinRecordArray[currentGameNumber] = 2;
 			eventLog("playerTwo set to victor of game number " + currentGameNumber);
+			playerTwoStats[3]++;
 			restartGame = true;
 		}
 		
@@ -330,13 +364,16 @@ public class BilliardLogicSupport {
 		if (playerTurn == 1) {
 			gameWinRecordArray[currentGameNumber] = 2;
 			eventLog("playerTwo set to victor of game number " + currentGameNumber);
+			playerTwoStats[3]++;
 			restartGame = true;
 		} else {
 			gameWinRecordArray[currentGameNumber] = 1;
 			eventLog("playerOne set to victor of game number " + currentGameNumber);
+			playerOneStats[3]++;
 			restartGame = true;
 		}
 		
+		switchTurn();
 		clearGameVariables();
 	}
 }

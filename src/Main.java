@@ -1,5 +1,5 @@
 //____________________TITLE______________________________________________________________________________________________
-/*Billiard System v.0004
+/*Billiard System v.0005
 *coded by
 *	Trevor Haggerty - cesismalon@gmail.com
 *	Zachary Drummond - zdrummon@gmail.com
@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.scene.text.*;
 
 //____________________MAIN_______________________________________________________________________________________________
 public class Main extends Application  {
@@ -86,7 +87,11 @@ public class Main extends Application  {
 		Button twelveBallButton 	= new Button();		
 		Button thirteenBallButton	= new Button();		
 		Button fourteenBallButton 	= new Button();
-		Button fifteenBallButton 	= new Button();				
+		Button fifteenBallButton 	= new Button();	
+		
+		Text playerTurnText			= new Text();
+		Text playerOneWins			= new Text();
+		Text playerTwoWins			= new Text();
 												
 //STAGE-DETAILS---------------------------------------------------------------------------------------------STAGE-DETAILS		
 		BSStage.setResizable(false);
@@ -115,7 +120,18 @@ public class Main extends Application  {
 				
 //SCORE-KEEPING-SCREEN-COMPONENTS---------------------------------------------------------SCORE-KEEPING-SCREEN-COMPONENTS
 														//  @  \\
-		
+//PLAYER-TURN-DISPLAY--------------------------------------------------------------------------------PLAYYER-TURN-DISPLAY
+		playerTurnText.relocate(windowWidth / 2 - buttonSizeWidth / 2, windowHeight / 2 - buttonSizeHeight * 5 / 2 - 10);
+		playerTurnText.setText("player " + BSLogic.playerTurn + "'s turn");
+
+//PLAYER-ONE-WINS--------------------------------------------------------------------------------PLAYYER-TURN-DISPLAY
+		playerOneWins.relocate(windowWidth / 2 - buttonSizeWidth / 2, windowHeight / 2 - buttonSizeHeight * 5 / 2 + 5);
+		playerOneWins.setText("player one total wins: " + BSLogic.playerOneStats[3]);
+
+//PLAYER-TWO-WINS--------------------------------------------------------------------------------PLAYYER-TURN-DISPLAY
+		playerTwoWins.relocate(windowWidth / 2 - buttonSizeWidth / 2, windowHeight / 2 - buttonSizeHeight * 5 / 2 + 20);
+		playerTwoWins.setText("player two total wins: " + BSLogic.playerTwoStats[3]);
+
 //BALL-POCKETED---------------------------------------------------------------------------------------------BALL-POCKETED
 		ballPocketed.setPrefSize(buttonSizeWidth, buttonSizeHeight);
 		ballPocketed.relocate(windowWidth / 2 - buttonSizeWidth / 2, windowHeight / 2 - buttonSizeHeight * 3 / 2 - 10);
@@ -222,6 +238,10 @@ public class Main extends Application  {
 				thirteenBallButton.setStyle("-fx-background-color: #FFFFFF");
 				fourteenBallButton.setStyle("-fx-background-color: #FFFFFF");
 				fifteenBallButton.setStyle("-fx-background-color: #FFFFFF");
+				
+				
+				playerOneWins.setText("player one total wins: " + BSLogic.playerOneStats[3]);
+				playerTwoWins.setText("player two total wins: " + BSLogic.playerTwoStats[3]);
 
 				BSLogic.restartGame = false;
 			}
@@ -229,6 +249,7 @@ public class Main extends Application  {
 			for (int i = 0; i < BSLogic.toggleButtonArray.length; i++) {		
 				BSLogic.toggleButtonArray[i] = false;
 			}	
+			playerTurnText.setText("player " + BSLogic.playerTurn + "'s turn");
 		});	
 		
 //DEFENSIVE-SHOT-BUTTON-----------------------------------------------------------------------------DEFENSIVE-SHOT-BUTTON
@@ -237,6 +258,7 @@ public class Main extends Application  {
 		defShotButton.setOnAction(e -> {
 			BSLogic.eventLog("defense shot button pressed.");
 			BSLogic.defShot();
+			playerTurnText.setText("player " + BSLogic.playerTurn + "'s turn");
 		});
 		
 //MISS-BUTTON-------------------------------------------------------------------------------------------------MISS-BUTTON
@@ -245,6 +267,7 @@ public class Main extends Application  {
 		missButton.setOnAction(e -> {
 			BSLogic.eventLog("missed shot button pressed.");
 			BSLogic.missShot();
+			playerTurnText.setText("player " + BSLogic.playerTurn + "'s turn");
 		});
 	
 //FOUL-BUTTON-------------------------------------------------------------------------------------------------FOUL-BUTTON
@@ -253,6 +276,7 @@ public class Main extends Application  {
 		foulButton.setOnAction(e -> {
 			BSLogic.eventLog("foul button pressed.");
 			BSLogic.foulShot();
+			playerTurnText.setText("player " + BSLogic.playerTurn + "'s turn");
 		});
 			
 //FORFEIT-BUTTON-------------------------------------------------------------------------------------------FORFEIT-BUTTON
@@ -264,6 +288,7 @@ public class Main extends Application  {
 			if (BSLogic.quitProgram == true) {
 				BSStage.setScene(BSStartScene);
 			}
+			playerTurnText.setText("player " + BSLogic.playerTurn + "'s turn");
 		});
 		
 //-------------------BALL-BUTTONS----------------------------------------------------------------------------------------
@@ -499,7 +524,8 @@ public class Main extends Application  {
 												twoBallButton, threeBallButton, fourBallButton, fiveBallButton,
 												sixBallButton, sevenBallButton, eightBallButton, nineBallButton,
 												tenBallButton, elevenBallButton, twelveBallButton,
-												thirteenBallButton, fourteenBallButton, fifteenBallButton);				
+												thirteenBallButton, fourteenBallButton, fifteenBallButton, 
+												playerTurnText, playerOneWins, playerTwoWins);				
 		BSStage.show(); 
 	}	
 }
