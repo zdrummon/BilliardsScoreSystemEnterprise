@@ -4,6 +4,7 @@
 *	Trevor Haggerty - cesismalon@gmail.com
 *	Zachary Drummond - zdrummon@gmail.com
 * */
+
 //____________________INCLUDES___________________________________________________________________________________________
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -65,7 +66,6 @@ public class Main extends Application  {
 			
 		Button startButton 			= new Button("click to start score keeping");
 		Button exitButton 			= new Button("click to exit program");
-		Button breakButton 			= new Button("break");
 		Button defShotButton 		= new Button("defense");
 		Button ballPocketed 		= new Button("pocketed");
 		Button missButton 			= new Button("miss");
@@ -86,7 +86,7 @@ public class Main extends Application  {
 		Button twelveBallButton 	= new Button();		
 		Button thirteenBallButton	= new Button();		
 		Button fourteenBallButton 	= new Button();
-		Button fifteenBallButton 	= new Button();			
+		Button fifteenBallButton 	= new Button();				
 												
 //STAGE-DETAILS---------------------------------------------------------------------------------------------STAGE-DETAILS		
 		BSStage.setResizable(false);
@@ -112,31 +112,128 @@ public class Main extends Application  {
 //START-SCREEN-LAYOUT---------------------------------------------------------------------------------START-SCREEN-LAYOUT
 		BSStartLayout.getChildren().addAll(startButton, exitButton);
 		BSStage.setScene(BSStartScene);
-			
+				
 //SCORE-KEEPING-SCREEN-COMPONENTS---------------------------------------------------------SCORE-KEEPING-SCREEN-COMPONENTS
 														//  @  \\
-//BREAK-BUTTON-----------------------------------------------------------------------------------------------BREAK-BUTTON
-		breakButton.setPrefSize(buttonSizeWidth, buttonSizeHeight);
-		breakButton.relocate(windowWidth / 2 - buttonSizeWidth / 2, windowHeight / 2 - buttonSizeHeight * 5 / 2 - 10);
-		breakButton.setOnAction(e -> {
-			BSLogic.eventLog("break button pressed.");
-			BSLogic.breakTriangle();
-			breakButton.setVisible(false);
-			defShotButton.setVisible(true);
-		});
 		
 //BALL-POCKETED---------------------------------------------------------------------------------------------BALL-POCKETED
 		ballPocketed.setPrefSize(buttonSizeWidth, buttonSizeHeight);
 		ballPocketed.relocate(windowWidth / 2 - buttonSizeWidth / 2, windowHeight / 2 - buttonSizeHeight * 3 / 2 - 10);
 		ballPocketed.setOnAction(e -> {
 			BSLogic.eventLog("ball pocketed button pressed.");
+						
 			BSLogic.modifyBallArray();
+			
+			if (BSLogic.ballOnTableArray[0] == 1) {
+				cueBallButton.setStyle("-fx-background-color: #FFFFFF");
+			} 	
+			
+			if (BSLogic.ballOnTableArray[1] == 1) {
+				oneBallButton.setVisible(false);
+			} 
+			
+			if (BSLogic.ballOnTableArray[2] == 1) {
+				twoBallButton.setVisible(false);	
+			} 
+			
+			if (BSLogic.ballOnTableArray[3] == 1) {
+				threeBallButton.setVisible(false);	
+			} 
+			
+			if (BSLogic.ballOnTableArray[4] == 1) {
+				fourBallButton.setVisible(false);	
+			} 
+			
+			if (BSLogic.ballOnTableArray[5] == 1) {
+				fiveBallButton.setVisible(false);	
+			} 
+			
+			if (BSLogic.ballOnTableArray[6] == 1) {
+				sixBallButton.setVisible(false);
+			}
+			
+			if (BSLogic.ballOnTableArray[7] == 1) {
+				sevenBallButton.setVisible(false);
+			} 
+						
+			if (BSLogic.ballOnTableArray[9] == 1) {
+				nineBallButton.setVisible(false);
+			} 
+			
+			if (BSLogic.ballOnTableArray[10] == 1) {
+				tenBallButton.setVisible(false);
+			} 
+			
+			if (BSLogic.ballOnTableArray[11] == 1) {
+				elevenBallButton.setVisible(false);
+			} 
+			
+			if (BSLogic.ballOnTableArray[12] == 1) {
+				twelveBallButton.setVisible(false);
+			} 
+			
+			if (BSLogic.ballOnTableArray[13] == 1) {
+				thirteenBallButton.setVisible(false);
+			} 
+			
+			if (BSLogic.ballOnTableArray[14] == 1) {
+				fourteenBallButton.setVisible(false);
+			} 
+			
+			if (BSLogic.ballOnTableArray[15] == 1) {
+				fifteenBallButton.setVisible(false);
+			}
+					
+			for (int i = 0; i < BSLogic.toggleButtonArray.length; i++) {
+				if (BSLogic.toggleButtonArray[i] == true) {
+					BSLogic.toggleButtonArray[i] = false;
+				}
+			}	
+			
+			if (BSLogic.restartGame == true) {
+				oneBallButton.setVisible(true);		 
+				twoBallButton.setVisible(true);			
+				threeBallButton.setVisible(true);	
+				fourBallButton.setVisible(true);	
+				fiveBallButton.setVisible(true);
+				sixBallButton.setVisible(true);
+				sevenBallButton.setVisible(true);
+				nineBallButton.setVisible(true);
+				tenBallButton.setVisible(true);
+				elevenBallButton.setVisible(true);
+				twelveBallButton.setVisible(true);
+				thirteenBallButton.setVisible(true);
+				fourteenBallButton.setVisible(true);
+				fifteenBallButton.setVisible(true);	
+				
+				cueBallButton.setStyle("-fx-background-color: #FFFFFF");
+				oneBallButton.setStyle("-fx-background-color: #FFFFFF");
+				twoBallButton.setStyle("-fx-background-color: #FFFFFF");
+				threeBallButton.setStyle("-fx-background-color: #FFFFFF");
+				fourBallButton.setStyle("-fx-background-color: #FFFFFF");
+				fiveBallButton.setStyle("-fx-background-color: #FFFFFF");
+				sixBallButton.setStyle("-fx-background-color: #FFFFFF");
+				sevenBallButton.setStyle("-fx-background-color: #FFFFFF");
+				eightBallButton.setStyle("-fx-background-color: #FFFFFF");
+				nineBallButton.setStyle("-fx-background-color: #FFFFFF");
+				tenBallButton.setStyle("-fx-background-color: #FFFFFF");
+				elevenBallButton.setStyle("-fx-background-color: #FFFFFF");
+				twelveBallButton.setStyle("-fx-background-color: #FFFFFF");
+				thirteenBallButton.setStyle("-fx-background-color: #FFFFFF");
+				fourteenBallButton.setStyle("-fx-background-color: #FFFFFF");
+				fifteenBallButton.setStyle("-fx-background-color: #FFFFFF");
+
+				BSLogic.restartGame = false;
+			}
+									
+			for (int i = 0; i < BSLogic.toggleButtonArray.length; i++) {		
+				BSLogic.toggleButtonArray[i] = false;
+			}	
 		});	
 		
 //DEFENSIVE-SHOT-BUTTON-----------------------------------------------------------------------------DEFENSIVE-SHOT-BUTTON
 		defShotButton.setPrefSize(buttonSizeWidth, buttonSizeHeight);
 		defShotButton.relocate(windowWidth / 2 - buttonSizeWidth / 2, windowHeight / 2 - buttonSizeHeight / 2 - 10);
-		defShotButton.setVisible(false);
 		defShotButton.setOnAction(e -> {
 			BSLogic.eventLog("defense shot button pressed.");
 			BSLogic.defShot();
@@ -164,6 +261,9 @@ public class Main extends Application  {
 		forfeitButton.setOnAction(e -> {
 			BSLogic.eventLog("forfeit button pressed.");
 			BSLogic.forfeit();
+			if (BSLogic.quitProgram == true) {
+				BSStage.setScene(BSStartScene);
+			}
 		});
 		
 //-------------------BALL-BUTTONS----------------------------------------------------------------------------------------
@@ -394,7 +494,7 @@ public class Main extends Application  {
 		});	
 		
 //-------------------SCORE-KEEPING-SCREEN-LAYOUT-------------------------------------------------------------------------		
-		BSInterfaceLayout.getChildren().addAll( breakButton, foulButton, missButton, defShotButton,
+		BSInterfaceLayout.getChildren().addAll( foulButton, missButton, defShotButton,
 												forfeitButton, ballPocketed, cueBallButton, oneBallButton, 
 												twoBallButton, threeBallButton, fourBallButton, fiveBallButton,
 												sixBallButton, sevenBallButton, eightBallButton, nineBallButton,

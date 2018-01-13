@@ -11,12 +11,19 @@ public class BilliardLogicSupport {
 	int[] gameWinRecordArray = new int[totalGameCount];
 	int[] ballOnTableArray = new int[16];
 	int[] currentInningArray = new int[totalGameCount];
-	int[] playerOneStats = new int[8];
-	int[] playerTwoStats = new int[8];
+	int[] playerOneStats = new int[10];
+	int[] playerTwoStats = new int[10];
 	int currentInning = 0;
-	int turnCounter = 0;
+	int playerTurn = 1;
 	int playerOneTargetBalls = 0;
 	int playerTwoTargetBalls = 0;
+	int shotsTaken = 0;
+	boolean takeAnotherShot = false;
+	boolean quitProgram = false;
+	boolean triangleBreak = true;
+	boolean playerOneFinalShot = false;
+	boolean playerTwoFinalShot = false;
+	boolean restartGame = false;
 	
 //INTERFACE-VARIABLES---------------------------------------------------------------------------------INTERFACE-VARIABLES
 	boolean[] toggleButtonArray = new boolean[16];	
@@ -56,6 +63,8 @@ public class BilliardLogicSupport {
 	
 	public void exitGame() {
 		eventLog("exitGame method called.");
+		
+		quitProgram = true;
 	}
 	
 	public void forfeit() {
@@ -88,7 +97,7 @@ public class BilliardLogicSupport {
 		
 		for (int i = 0; i < playerTwoStats.length; i++) {
 			playerTwoStats[i] = 0;
-		}			
+		}	
 	}
 	
 	public void clearGameVariables() {
@@ -102,8 +111,11 @@ public class BilliardLogicSupport {
 		
 		playerOneTargetBalls = 0;
 		playerTwoTargetBalls = 0;
-		
+		triangleBreak = true;
 		currentGameNumber++;
+		
+		playerOneFinalShot = false;
+		playerTwoFinalShot = false;
 	}
 	
 	public void startSetInstance() {
@@ -116,40 +128,171 @@ public class BilliardLogicSupport {
 		clearGameVariables();
 	}
 	
-	public void breakTriangle() {
-		eventLog("breakTriangle method called.");
-	}
-	
 	public void modifyBallArray() {
 		eventLog("modifyBallArray method called.");
-	}
+		
+		if ((playerOneTargetBalls == 0 || playerTwoTargetBalls == 0 ) && triangleBreak == false) {
+			assignBallTargets();
+		}
+		
+		for (int i = 0; i < toggleButtonArray.length; i++) {		
+			if (toggleButtonArray[i] == true) {
+				ballOnTableArray[i] = 1;
+			}
+		}	
+		
+		for (int i = 0; i < toggleButtonArray.length; i++) {		
+			if (toggleButtonArray[i] == true) {
+				 if (i == 0 && triangleBreak == true) {
+					loseGame();
+									
+				} else if (i == 0) {
+					//if the cue ball went in
+					scratchShot();
+					
+				} else if (i == 8) {
+					//if the 8 ball went in
+					if (playerTurn == 1 && playerOneFinalShot == true) {
+						winGame();
+					} else if (playerTurn == 2 && playerTwoFinalShot == true) {
+						winGame();
+					} else if (playerTurn == 1 && playerOneFinalShot == false) {
+						loseGame();
+					} else if (playerTurn == 2 && playerTwoFinalShot == false) {
+						loseGame();
+					}					
+					
+				} else if (i < 8 && i > 0 && !(playerOneTargetBalls == 0 || playerTwoTargetBalls == 0 )) {
+					//if a solid went in
+					if (playerTurn == 1 && playerOneTargetBalls == 1) {
+						takeAnotherShot = true;
+					} else if (playerTurn == 2 && playerTwoTargetBalls == 1) {
+						takeAnotherShot = true;
+					} 
+					
+				} else if (i > 8) {
+					//if a stripe went in
+					if (playerTurn == 1 && playerOneTargetBalls == 2) {
+						takeAnotherShot = true;
+					} else if (playerTurn == 2 && playerTwoTargetBalls == 2) {
+						takeAnotherShot = true;
+					}
+				}
+			}
+		}	
+		
+		if (takeAnotherShot == false && triangleBreak == false) {
+			switchTurn();
+		} else {
+			takeAnotherShot = false;
+		}
+	
+		triangleBreak = false;
+	}	
 
 	public void switchTurn() {
+		if (playerTurn == 1 ) {
+			playerTurn = 2;
+		} else if (playerTurn == 2 ){
+			playerTurn = 1;		
+		}
+		
 		eventLog("switchTurn method called.");
+		eventLog("it is now player " + playerTurn + "'s turn");
 	}
 	
 	public void scratchShot() {
-		eventLog("scratchShot method called.");
+		if (playerTurn == 1 ) {
+			playerOneStats[8] = ++playerOneStats[8];
+			eventLog("scratchShot method called.");
+			eventLog("the player has scratched "+ playerOneStats[8] + " shots");
+			++shotsTaken;
+			switchTurn();
+		
+		} else {
+			playerTwoStats[8] = ++playerTwoStats[8];
+			eventLog("scratchShot method called.");
+			eventLog("the player has scratched "+ playerTwoStats[8] + " shots");
+			++shotsTaken;
+			switchTurn();			
+		}
 	}
 	
 	public void foulShot() {
-		eventLog("foulShot method called.");
+		if (playerTurn == 1 ) {
+			playerOneStats[9]= ++playerOneStats[9];
+			eventLog("foulShot method called.");
+			eventLog("the player has had "+ playerOneStats[9] + " foul shots");
+			++shotsTaken;
+			switchTurn();
+			
+		} else {
+			playerTwoStats[9]= ++playerTwoStats[9];
+			eventLog("foulShot method called.");
+			eventLog("the player has had "+ playerTwoStats[9] + " foul shots");
+			++shotsTaken;
+			switchTurn();
+		}
 	}
 	
 	public void missShot() {
-		eventLog("missShot method called.");
+		if (playerTurn == 1 ) {
+			playerOneStats[7]= ++playerOneStats[7];
+			eventLog("missShot method called.");
+			eventLog("the player has missed "+ playerOneStats[7] + " shots");
+			++shotsTaken;
+			switchTurn();
+		
+		} else {
+			playerTwoStats[7]= ++playerTwoStats[7];
+			eventLog("missShot method called.");
+			eventLog("the player has missed "+ playerTwoStats[7] + " shots");
+			++shotsTaken;
+			switchTurn();
+		}
 	}
 	
 	public void defShot() {
-		eventLog("defShot method called.");
+		if (playerTurn == 1 ) {
+			playerOneStats[6]= ++playerOneStats[6];
+			eventLog("defShot method called.");
+			eventLog("the player has had "+ playerOneStats[6] + " defensive shots");
+			++shotsTaken;
+			switchTurn();
+		
+		} else {
+			playerTwoStats[6]= ++playerTwoStats[6];
+			eventLog("defShot method called.");
+			eventLog("the player has had "+ playerTwoStats[6] + " defensive shots");
+			++shotsTaken;
+			switchTurn();
+		}
 	}
-	
+
 	public void assignBallTargets() {
+		
+		for (int i = 0; i < toggleButtonArray.length; i++) {		
+			if (toggleButtonArray[i] == true && i < 8) {
+				if (playerTurn == 1 ) {
+					playerOneTargetBalls = 1;
+					playerTwoTargetBalls = 2;
+				} else if (playerTurn == 2 ){
+					playerOneTargetBalls = 2;
+					playerTwoTargetBalls = 1;
+				}
+				
+			} else if (toggleButtonArray[i] == true && i > 8) {
+				if (playerTurn == 1 ) {
+					playerOneTargetBalls = 2;
+					playerTwoTargetBalls = 1;
+				} else if (playerTurn == 2 ){
+					playerOneTargetBalls = 1;
+					playerTwoTargetBalls = 2;
+				}			
+			}
+		}	
+		
 		eventLog("assignBallTargets method called.");
-	}
-	
-	public void autoLose() {
-		eventLog("autoLose method called.");
 	}
 	
 	public void callShot() {
@@ -165,5 +308,35 @@ public class BilliardLogicSupport {
 			toggleButtonArray[ballIndex] = true;
 			eventLog( "toggleButtonArray[" + (ballIndex) + "] toggled to true.");
 		}	
+	}
+	
+	public void winGame() {
+		eventLog("winGame method called.");
+		if (playerTurn == 1) {
+			gameWinRecordArray[currentGameNumber] = 1;
+			eventLog("playerOne set to victor of game number " + currentGameNumber);
+			restartGame = true;
+		} else {
+			gameWinRecordArray[currentGameNumber] = 2;
+			eventLog("playerTwo set to victor of game number " + currentGameNumber);
+			restartGame = true;
+		}
+		
+		clearGameVariables();		
+	}
+	
+	public void loseGame() {
+		eventLog("loseGame method called.");
+		if (playerTurn == 1) {
+			gameWinRecordArray[currentGameNumber] = 2;
+			eventLog("playerTwo set to victor of game number " + currentGameNumber);
+			restartGame = true;
+		} else {
+			gameWinRecordArray[currentGameNumber] = 1;
+			eventLog("playerOne set to victor of game number " + currentGameNumber);
+			restartGame = true;
+		}
+		
+		clearGameVariables();
 	}
 }
