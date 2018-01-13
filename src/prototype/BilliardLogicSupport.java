@@ -1,3 +1,4 @@
+package prototype;
 import java.util.Date;
 
 public class BilliardLogicSupport {
