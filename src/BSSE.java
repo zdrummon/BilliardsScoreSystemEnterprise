@@ -4,39 +4,45 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Button;
+
 /*
 import javafx.scene.text.*;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 */
 
 public class BSSE {
 	
-	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	int windowHeight = (int) screenSize.getHeight() / 2;
-	int windowWidth = (int) screenSize.getWidth() / 2;
+	//screen and window dimensions
+	private Dimension ScreenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	private int windowHeight = (int) ScreenSize.getHeight() / 2;
+	private int windowWidth = (int) ScreenSize.getWidth() / 2;
 	
-	Pane StartSceneLayout = new Pane();
-	Scene StartScene = new Scene(StartSceneLayout, windowWidth, windowHeight);
-	Stage MainStage = new Stage();
-	EventLog Logger = new EventLog();
+	//window initial layout and source
+	private Pane StartSceneLayout = new Pane();
+	private Scene StartScene = new Scene(StartSceneLayout, windowWidth, windowHeight);
+	private Stage MainStage = new Stage();
+	
+	public Button ExitButton = new Button("exit program");
 	
 	public BSSE() {}
 	
 	public void makeMainStage() {
+		EventLog.logEvent("log object test");	
 		
 		//TEST OBJECTS
-		Button testButton = new Button("test exit button");
 		
-		testButton.relocate(0, 0);
-		testButton.setOnAction(e -> {
+		ExitButton.relocate(50, 50);
+		ExitButton.setOnAction(e -> {
 			MainStage.close();
-			Logger.logEvent("end program");	
+			EventLog.endLog();	
 		});
-		
-		StartSceneLayout.getChildren().addAll(testButton);
+//		ExitButton.buttonPress();
+
+
+		StartSceneLayout.getChildren().addAll(ExitButton);
 		MainStage.setScene(StartScene);
 		MainStage.show();
+
 	}
 }

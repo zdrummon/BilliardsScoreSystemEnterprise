@@ -8,18 +8,21 @@ import javafx.application.*;
 import javafx.stage.Stage;
 
 public class Main extends Application{
-	
-	public EventLog Logger = new EventLog();
+
 	public BSSE BSSEManager = new BSSE();
 	
 	public static void main(String[] arg) {		
+		
+		//executes start for javafx
 		launch(arg);	
 	}
 	
+	//executes the main program
 	@Override
 	public void start(Stage MainStage) throws Exception {		
-		System.out.println(EventLog.programVersion + " \n          EVENT TIME        |EVENT COUNT|LOG ITEM");
-		Logger.logEvent("start program");			
+		
+		EventLog.startLog();		
+		
 		BSSEManager.makeMainStage();	
 	}
 }
