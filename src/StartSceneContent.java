@@ -8,7 +8,10 @@ public class StartSceneContent{
 	private ExitProgram exitProgram = new ExitProgram();
 	private StartProgram startProgram = new StartProgram();
 
-	public void populateScene() {		
+	public void populateScene() {
+		EventLog.logEvent("populate startScene");	
 		startSceneLayout.getChildren().addAll(exitProgram.exitButton, startProgram.playButton);
+		exitProgram.generateExitButton();
+		startProgram.generateStartButton();
 	}
 }

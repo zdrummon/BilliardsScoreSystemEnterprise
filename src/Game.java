@@ -10,8 +10,8 @@ public class Game{
 	
 	//screen and window dimensions
 	private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	private static int windowHeight = (int) screenSize.getHeight() / 2;
-	private static int windowWidth = (int) screenSize.getWidth() / 2;
+	public static int windowHeight = (int) screenSize.getHeight() / 2;
+	public static int windowWidth = (int) screenSize.getWidth() / 2;
 	
 	//window initial layout and source
 	private static StartSceneContent startSceneContent = new StartSceneContent(); 

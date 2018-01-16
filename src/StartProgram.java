@@ -2,13 +2,18 @@
 import javafx.scene.control.Button;
 
 public class StartProgram{
-	public StartProgram() {		
+	public StartProgram() {}
+	
+	public Button playButton = new Button("Start Program");
+	private GameSceneContent gameSceneContent = new GameSceneContent();
+	
+	public void generateStartButton() {
+		EventLog.logEvent("generate startButton");	
 		playButton.relocate(200, 200);
 		playButton.setOnAction(e -> {
 			EventLog.logEvent("start game");	
-			Game.mainStage.setScene(Game.startScene);
+			Game.mainStage.setScene(GameSceneContent.gameScene);
+			gameSceneContent.populateGameScene();
 		});
 	}
-	
-	public Button playButton = new Button("Start Program");
 }
