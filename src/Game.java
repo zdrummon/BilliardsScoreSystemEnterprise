@@ -4,7 +4,6 @@ import java.awt.Toolkit;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
-
 public class Game{
 	public Game() {}	
 	
@@ -23,6 +22,9 @@ public class Game{
 		EventLog.logEvent("show window");	
 		
 		startSceneContent.populateScene();
+		
+		mainStage.setTitle(EventLog.programVersion);
+		mainStage.setResizable(false);
 		mainStage.setScene(startScene);
 		mainStage.show();
 	}

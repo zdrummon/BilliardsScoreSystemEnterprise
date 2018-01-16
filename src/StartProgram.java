@@ -12,6 +12,7 @@ public class StartProgram{
 		playButton.relocate(200, 200);
 		playButton.setOnAction(e -> {
 			EventLog.logEvent("start game");	
+			
 			Game.mainStage.setScene(GameSceneContent.gameScene);
 			gameSceneContent.populateGameScene();
 		});

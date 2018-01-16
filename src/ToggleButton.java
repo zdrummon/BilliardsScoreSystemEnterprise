@@ -21,20 +21,25 @@ public class ToggleButton extends Button {
 	
 	public void generateToggleButton () {
 		EventLog.logEvent("create ball with index " + ballIndex);
-		Image buttonImage = new Image(getClass().getResourceAsStream(buttonFile));
 		EventLog.logEvent("create " + buttonFile);	
+		
+		Image buttonImage = new Image(getClass().getResourceAsStream(buttonFile));
 		this.setGraphic(new ImageView(buttonImage));
+		
 		this.setPrefSize(buttonWidth, buttonHeight);
 		this.relocate(buttonX, buttonY);
 		this.setStyle("-fx-background-color: #0f770f");	
+		
 		this.setOnAction(e -> {
 			if (isPressed == true) {
+				EventLog.logEvent("deactive " + ballIndex + " ball button");
+				
 				this.setStyle("-fx-background-color: #0f770f");				
-				EventLog.logEvent("untoggle " + ballIndex + " ball button");
 				isPressed = false;
 			} else {
+				EventLog.logEvent("activate " + ballIndex + " ball button");
+				
 				this.setStyle("-fx-background-color: #FFFF00");
-				EventLog.logEvent("toggle " + ballIndex + " ball button");
 				isPressed = true;
 			}
 		});

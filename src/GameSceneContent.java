@@ -27,12 +27,10 @@ public class GameSceneContent {
 	public ToggleButton fifteenBallButton = new ToggleButton(Game.windowWidth / 2 + 350, Game.windowHeight / 2 - 200, "images/15ball.png", ballID++);
 	
 	public void populateGameScene() {	
-		EventLog.logEvent("populate gameScene");	
-		gameSceneLayout.getChildren().addAll(cueBallButton, oneBallButton, twoBallButton, threeBallButton, fourBallButton, fiveBallButton, 
-											 sixBallButton, sevenBallButton, eightBallButton, nineBallButton, tenBallButton, 
-											 elevenBallButton, twelveBallButton, thirteenBallButton, fourteenBallButton, 
-											 fifteenBallButton);
+		EventLog.logEvent("populate gameScene");
+		
 		gameSceneLayout.setStyle("-fx-background-color: #0f770f");
+		
 		cueBallButton.generateToggleButton();	
 		oneBallButton.generateToggleButton();
 		twoBallButton.generateToggleButton();
@@ -49,5 +47,9 @@ public class GameSceneContent {
 		thirteenBallButton.generateToggleButton();
 		fourteenBallButton.generateToggleButton();
 		fifteenBallButton.generateToggleButton();
+		gameSceneLayout.getChildren().addAll(cueBallButton, oneBallButton, twoBallButton, threeBallButton, fourBallButton, fiveBallButton, 
+											 sixBallButton, sevenBallButton, eightBallButton, nineBallButton, tenBallButton, 
+											 elevenBallButton, twelveBallButton, thirteenBallButton, fourteenBallButton, 
+											 fifteenBallButton);
 	}
 }

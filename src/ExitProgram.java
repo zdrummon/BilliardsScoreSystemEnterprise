@@ -10,8 +10,9 @@ public class ExitProgram{
 		EventLog.logEvent("generate exitButton");	
 		exitButton.relocate(200, 400);
 		exitButton.setOnAction(e -> {
+			EventLog.logEvent("end program");		
+			
 			Game.mainStage.close();
-			EventLog.logEvent("end program");	
 			EventLog.endLog();	
 		});
 	}

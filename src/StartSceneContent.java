@@ -9,9 +9,12 @@ public class StartSceneContent{
 	private StartProgram startProgram = new StartProgram();
 
 	public void populateScene() {
-		EventLog.logEvent("populate startScene");	
-		startSceneLayout.getChildren().addAll(exitProgram.exitButton, startProgram.playButton);
+		EventLog.logEvent("populate startScene");
+		
 		exitProgram.generateExitButton();
 		startProgram.generateStartButton();
+		
+		startSceneLayout.setStyle("-fx-background-color: #0f770f");
+		startSceneLayout.getChildren().addAll(exitProgram.exitButton, startProgram.playButton);
 	}
 }
