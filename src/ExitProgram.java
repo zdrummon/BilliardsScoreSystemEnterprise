@@ -1,28 +1,16 @@
-/*
-
+//this class creates the exit button
 import javafx.scene.control.Button;
-import javafx.scene.Scene;
-import javafx.stage.Stage;;
 
-public class ExitProgram {
-	
-	Scene StartScene = new Scene();
-	Stage MainStage = new Stage();
-	EventLog Logger = new EventLog();
-	Button ExitButton = new Button();
-	
-	public ExitProgram() {}
-	
-	public void buttonPress() {
-
-		ExitButton.relocate(0, 0);
-		ExitButton.setOnAction(e -> {
-			MainStage.close();
-			Logger.logEvent("end program");	
+public class ExitProgram{
+	public ExitProgram() {
+		exitButton.relocate(200, 400);
+		exitButton.setOnAction(e -> {
+			Game.mainStage.close();
+			EventLog.logEvent("end program");	
+			EventLog.endLog();	
 		});
-		
 	}
 	
+	public Button exitButton = new Button("Exit Program");
 
 }
-*/

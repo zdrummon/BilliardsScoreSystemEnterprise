@@ -1,34 +1,33 @@
+//this class prints logged events to the console
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class EventLog {
-
-	public static Date logDate;
-	private static SimpleDateFormat dateFormatter = new SimpleDateFormat("yy-MM-dd '/' hh:mm:ss a");
-
-	private static String programVersion = "Billiard Score System - Enterprise v6";
-	private static int logCounter = 0;
-	
 	public EventLog() {}
 	
-	//formats initial log output and header
+	//date & time objects
+	public static Date logDate;
+	private static SimpleDateFormat dateFormatter = new SimpleDateFormat(" dd-MM-yy' | 'hh:mm:ss");
+
+	//log variables
+	public static String programVersion = "Billiards Score System - Enterprise v7 \n\n";
+	private static String logColumns = "   DATE   |   TIME   |  EVENT  |  LOG ITEM";
+	private static int logCounter = 0;
+
+	//formats log header
 	public static void startLog() {
+		System.out.println(programVersion + logColumns);
+	}	
 		
-		System.out.println(programVersion + "\n                 TIME  |  EVENT  |  LOG ITEM");
-		EventLog.logEvent("start program");	
+	//formats log footer
+	public static void endLog() {	
+		System.out.println(logColumns);
 	}
 	
-	//enters an item into the console log
+	//formats log items and timestamps them
 	public static void logEvent(String logItem) {
-		
 		String logCounterString = String.format(" | % 7d | ", ++logCounter);
-		System.out.println(dateFormatter.format(EventLog.logDate = new Date()) + logCounterString + logItem);
-	}
-	
-	//formats final log output and footer
-	public static void endLog() {
-		
-		EventLog.logEvent("end program");	
-		System.out.println("                 TIME  |  EVENT  |  LOG ITEM");
+		String logFormatPrint = dateFormatter.format(logDate = new Date()) + logCounterString + logItem;
+		System.out.println(logFormatPrint);
 	}
 }
