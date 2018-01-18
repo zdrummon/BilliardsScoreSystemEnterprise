@@ -2,17 +2,16 @@
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
-
 public class ToggleButton extends Button {
 	public ToggleButton(int x, int y, String bFile, int i) {
-		buttonFile = bFile;
+		buttonImageFile = bFile;
 		buttonX = x;
 		buttonY = y;
 		ballIndex = i;
 	}
 	
 	private int ballIndex;
-	private String buttonFile = "";	
+	private String buttonImageFile = "";	
 	private int buttonX;
 	private int buttonY;
 	private boolean isPressed = false;
@@ -21,9 +20,9 @@ public class ToggleButton extends Button {
 	
 	public void generateToggleButton () {
 		EventLog.logEvent("create ball with index " + ballIndex);
-		EventLog.logEvent("create " + buttonFile);	
+		EventLog.logEvent("create button using " + buttonImageFile);	
 		
-		Image buttonImage = new Image(getClass().getResourceAsStream(buttonFile));
+		Image buttonImage = new Image(getClass().getResourceAsStream(buttonImageFile));
 		this.setGraphic(new ImageView(buttonImage));
 		
 		this.setPrefSize(buttonWidth, buttonHeight);
@@ -36,11 +35,26 @@ public class ToggleButton extends Button {
 				
 				this.setStyle("-fx-background-color: #0f770f");				
 				isPressed = false;
+				
 			} else {
 				EventLog.logEvent("activate " + ballIndex + " ball button");
 				
 				this.setStyle("-fx-background-color: #FFFF00");
 				isPressed = true;
+			}
+		});
+		
+		this.setOnMouseExited(ae ->{
+			if (isPressed == false)  {
+			EventLog.logEvent("change button to green");
+			this.setStyle("-fx-background-color: #0f770f");	
+			}
+		});
+		
+		this.setOnMouseEntered(be ->{
+			if (isPressed == false)  {
+			EventLog.logEvent("change button to dark green");
+			this.setStyle("-fx-background-color: #074407");
 			}
 		});
 	}
