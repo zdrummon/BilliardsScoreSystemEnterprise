@@ -5,7 +5,7 @@ public class StartProgram{
 	public StartProgram() {}
 	
 	public Button playButton = new Button("Start Program");
-	private GameSceneContent gameSceneContent = new GameSceneContent();
+	public static GameSceneContent gameSceneContent = new GameSceneContent();
 	
 	public void generateStartButton() {
 		EventLog.logEvent("generate startButton");	
@@ -15,6 +15,7 @@ public class StartProgram{
 			
 			Game.mainStage.setScene(GameSceneContent.gameScene);
 			gameSceneContent.populateGameScene();
+			Game.beginGameLogic();
 		});
 	}
 }

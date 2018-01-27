@@ -55,7 +55,7 @@ public class ForfeitGameButton extends Button {
 	}
 	
 	public void forfeitGame() {
-		EventLog.logEvent("closee game");
+		EventLog.logEvent("close game");
 		Game.mainStage.close();
 	}
 	

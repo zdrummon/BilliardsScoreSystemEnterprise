@@ -58,6 +58,7 @@ public class ConfirmShotButton extends Button {
 		this.setOnMouseReleased(de ->{
 			EventLog.logEvent("change button to green");
 			this.setStyle("-fx-background-color: #0f770f");	
+			Game.gameLogic.ballTracker.confirmShot();
 		});
 		
 		

@@ -8,13 +8,16 @@ public class Game{
 	public Game() {}	
 	
 	//screen and window dimensions
+	public static GameLogic gameLogic = new GameLogic();
 	private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	public static int windowHeight = (int) screenSize.getHeight() / 2;
-	public static int windowWidth = (int) screenSize.getWidth() / 2;
+	private static int startWindowHeight = (int) screenSize.getHeight() / 2;
+	private static int startWindowWidth = (int) screenSize.getWidth() / 2;
+	public static int currentWindowHeight = startWindowHeight;
+	public static int currentWindowWidth = startWindowWidth;
 	
 	//window initial layout and source
 	private static StartSceneContent startSceneContent = new StartSceneContent(); 
-	public static Scene startScene = new Scene(startSceneContent.startSceneLayout, windowWidth, windowHeight);
+	public static Scene startScene = new Scene(startSceneContent.startSceneLayout, currentWindowWidth, currentWindowHeight);
 	public static Stage mainStage = new Stage();
 		
 	//build and display the main program window
@@ -24,8 +27,26 @@ public class Game{
 		startSceneContent.populateScene();
 		
 		mainStage.setTitle(EventLog.programVersion);
-		mainStage.setResizable(false);
+		mainStage.setResizable(true);
 		mainStage.setScene(startScene);
 		mainStage.show();
+		screenResize();
+	}
+	
+	public static void beginGameLogic() {
+		gameLogic.trackBalls();
+		
+	}
+	
+	public static void screenResize() {
+		mainStage.widthProperty().addListener(ea -> {
+			currentWindowWidth = (int)mainStage.getWidth();
+			EventLog.logEvent("new screen width is " + currentWindowWidth);
+		});
+		
+		mainStage.heightProperty().addListener(ea -> {
+			currentWindowHeight = (int)mainStage.getHeight();
+			EventLog.logEvent("new screen height is " + currentWindowHeight);
+		});
 	}
 }

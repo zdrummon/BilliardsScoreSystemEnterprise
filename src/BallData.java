@@ -1,87 +1,79 @@
 public class BallData {
-	public BallData() {
-		for (int i = 0; i < ballsOnTableArray.length; i++) {
-			ballsOnTableArray[i] = 0;
-		}
-		
-		for (int i = 0; i < toggledButtonArray.length; i++) {
-			toggledButtonArray[i] = false;
-		}
+	public BallData(int cBallData, int cPocketLocation, int cOwner, boolean cOnTable, boolean cBallCalled , boolean cBallToggled) {
+		ballIndex = cBallData;
+		pocketLocation = cPocketLocation;
+		owner = cOwner;
+		onTable = cOnTable;
+		ballCalled = cBallCalled;
+		ballToggled = cBallToggled;
 	}
 	
-	int[] ballsOnTableArray = new int[16];
-	boolean[] toggledButtonArray = new boolean[16];
-	boolean breakShot = true;
-	boolean takeAnotherShot = false;
-	boolean playerOneFinalShot = false;
-	boolean playerTwoFinalShot = false;
+	private int ballIndex;
+	private int pocketLocation;
+	private int owner;
+	private boolean onTable;
+	private boolean ballCalled;
+	private boolean ballToggled;
 
-	//SETTERS
-	public void setBallsOnTable(int index, int ballPocketedLocation) {
-		EventLog.logEvent("ball " + index + " set to pocket " + ballPocketedLocation);
-		ballsOnTableArray[index] = ballPocketedLocation;
+	//SETTERS	
+	public void setBallIndex (int i) {
+		EventLog.logEvent("ballIndex set to " + i);
+		ballIndex = i;
 	}
 	
-	public void setToggledButtonArray(int index, boolean isBallSelected) {
-		EventLog.logEvent("ball " + index + " set to toggled " + isBallSelected);
-		toggledButtonArray[index] = isBallSelected;
+	public void setPocketLocation (int i) {
+		EventLog.logEvent("ball " + ballIndex + "'s pocketLocation set to " + i);
+		pocketLocation = i;
 	}
 	
-	public void setBreakShot(boolean i) {
-		EventLog.logEvent("breakShot set to" + i);
-		breakShot = i;
+	public void setOwner (int i) {
+		EventLog.logEvent("ball " + ballIndex + "'s owner set to " + i);
+		owner = i;
 	}
 	
-	public void setTakeAnotherShot(boolean i) {
-		EventLog.logEvent("takeAnotherShot set to" + i);
-		takeAnotherShot = i;
+	public void setOnTable (boolean i) {
+		EventLog.logEvent("ball " + ballIndex + "'s onTable set to " + i);
+		onTable = i;
 	}
 	
-	public void setPlayerOneFinalShot(boolean i) {
-		EventLog.logEvent("playerOneFinalShot set to" + i);
-		playerOneFinalShot = i;
+	public void setBallCalled (boolean i) {
+		EventLog.logEvent("ball " + ballIndex + "'s ballCalled set to " + i);
+		ballCalled = i;
 	}
-	
-	public void setPlayerTwoFinalShot(boolean i) {
-		EventLog.logEvent("playerTwoFinalShot set to" + i);
-		playerTwoFinalShot = i;
+
+	public void setBallToggled (boolean i) {
+		EventLog.logEvent("ball " + ballIndex + "'s ballToggled set to " + i);
+		ballToggled = i;
 	}
 	
 	//GETTERS
-	public int getBallsOnTable(int index) {
-		int resultingPocket = ballsOnTableArray[index];
-		EventLog.logEvent("ball " + index + " is in pocket " + resultingPocket);
-		return resultingPocket;
+	public int getBallIndex () {
+		EventLog.logEvent("ballIndex is " + ballIndex);
+		return ballIndex;
 	}
 	
-	public boolean getToggledButtonArray(int index) {
-		boolean resultingSelection = toggledButtonArray[index];
-		EventLog.logEvent("ball " + index + " is toggled " + resultingSelection);
-		return resultingSelection;
+	public int getPocketLocation () {
+		EventLog.logEvent("ball " + ballIndex + "'s pocketLocation is " + pocketLocation);
+		return pocketLocation;
 	}
 	
-	public boolean getBreakShot() {
-		EventLog.logEvent("breakShot is " + breakShot);
-		boolean j = breakShot;
-		return j;
+	public int getOwner () {
+		EventLog.logEvent("ball " + ballIndex + "'s owner is " + owner);
+		return owner;
 	}
 	
-	public boolean getTakeAnotherShot() {
-		EventLog.logEvent("takeAnotherShot is " + takeAnotherShot);
-		boolean j = takeAnotherShot;
-		return j;
+	public boolean getOnTable () {
+		EventLog.logEvent("ball " + ballIndex + "'s onTable is " + onTable);
+		return onTable;
 	}
 	
-	public boolean getPlayerOneFinalShot() {
-		EventLog.logEvent("playerOneFinalShot is " + playerOneFinalShot);
-		boolean j = playerOneFinalShot;
-		return j;
+	public boolean getBallCalled () {
+		EventLog.logEvent("ball " + ballIndex + "'s ballCalled is " + ballCalled);
+		return ballCalled;
 	}
 	
-	public boolean getPlayerTwoFinalShot() {
-		EventLog.logEvent("playerTwoFinalShot is " + playerTwoFinalShot);
-		boolean j = playerTwoFinalShot;
-		return j;
+	public boolean getBallToggled () {
+		EventLog.logEvent("ball " + ballIndex + "'s ballCalled is " + ballToggled);
+		return ballToggled;
 	}
-
 }
