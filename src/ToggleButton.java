@@ -14,7 +14,7 @@ public class ToggleButton extends Button {
 	private String buttonImageFile = "";	
 	private int buttonX;
 	private int buttonY;
-	private boolean isPressed = false;
+	public boolean isPressed = false;
 	private int buttonWidth = 0;
 	private int buttonHeight = 0;
 	

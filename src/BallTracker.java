@@ -34,15 +34,20 @@ public class BallTracker {
 		//	assignBallTargets();
 		//}
 		
-		for (int i = 0; i < ballArray.length; i++) {		
+		for (int i = 1; i < ballArray.length; i++) {		
 			if (ballArray[i].getBallToggled() == true) {
 				ballArray[i].setOnTable(false);
 				ballArray[i].setBallToggled(false);
 				EventLog.logEvent("ball " + i + "'s data has been set to pocketed");
-//				gameSceneContent
+				GameSceneContent.ToggleButtonArray[i].setVisible(false);
 			}
 			
+			
 		}	
+		if (ballArray[0].getBallToggled() == true) {
+			GameSceneContent.ToggleButtonArray[0].isPressed = false;
+			GameSceneContent.ToggleButtonArray[0].setStyle("-fx-background-color: #0f770f");	
+		}
 		/*
 		for (int i = 0; i < toggleButtonArray.length; i++) {		
 			if (toggleButtonArray[i] == true) {
