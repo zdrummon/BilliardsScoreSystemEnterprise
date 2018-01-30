@@ -35,6 +35,7 @@ public class Game{
 	
 	public static void beginGameLogic() {
 		gameLogic.trackBalls();
+		gameLogic.createPlayers();
 		
 	}
 	

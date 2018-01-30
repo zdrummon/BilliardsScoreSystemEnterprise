@@ -56,104 +56,104 @@ public class Player {
 	*/
 
 	//SETTERS
-	private void setBreakShot (boolean sBreakShot) {
+	public void setBreakShot (boolean sBreakShot) {
 		EventLog.logEvent("player " + playerID + "'s breakShot set to " + breakShot);
 		breakShot = sBreakShot;
 	}
 	
-	private void setFinalShot (boolean sFinalShot) {
+	public void setFinalShot (boolean sFinalShot) {
 		EventLog.logEvent("player " + playerID + "'s finalShot set to " + finalShot);
 		finalShot = sFinalShot;
 	}
 	
-	private void setBallInHand (boolean sBallInHand) {
+	public void setBallInHand (boolean sBallInHand) {
 		EventLog.logEvent("player " + playerID + "'s ballInHand set to " + ballInHand);
 		ballInHand = sBallInHand;
 	}
 	
-	private void setbBllsAssigned (int sBallsAssigned) {
+	public void setBallsAssigned (int sBallsAssigned) {
 		EventLog.logEvent("player " + playerID + "'s ballsAssigned set to " + ballsAssigned);
 		ballsAssigned = sBallsAssigned;
 	}
 	
-	private void setPlayerID (int sPlayerID) {
+	public void setPlayerID (int sPlayerID) {
 		EventLog.logEvent("playerID set to " + playerID);
 		playerID = sPlayerID;
 	}
 	
-	private void setGamesWon(int sGamesWon) {
+	public void setGamesWon(int sGamesWon) {
 		EventLog.logEvent("player " + playerID + "'s wins have been set to " + gamesWon);
 		gamesWon = sGamesWon;
 	}
 	
-	private void setShotsTakenThisGame(int sShotsTakenThisGame) {
+	public void setShotsTakenThisGame(int sShotsTakenThisGame) {
 		EventLog.logEvent("player " + playerID + "'s shotsTakenThisGame have been set to " + shotsTakenThisGame);		
 		shotsTakenThisGame = sShotsTakenThisGame;
 	}
 	
-	private void setShotsTakenThisSet(int sShotsTakenThisSet) {
+	public void setShotsTakenThisSet(int sShotsTakenThisSet) {
 		EventLog.logEvent("player " + playerID + "'s shotsTakenThisSet have been set to " + shotsTakenThisSet);
 		shotsTakenThisSet = sShotsTakenThisSet;
 	}
 	
-	private void setFoulsThisGame(int sFoulsThisGame) {
+	public void setFoulsThisGame(int sFoulsThisGame) {
 		EventLog.logEvent("player " + playerID + "'s foulsThisGame have been set to " + foulsThisGame);
 		foulsThisGame = sFoulsThisGame;
 	}
 	
-	private void setFoulsThisSet(int sFoulsThisSet) {
+	public void setFoulsThisSet(int sFoulsThisSet) {
 		EventLog.logEvent("player " + playerID + "'s foulsThisSet have been set to  " + foulsThisSet);
 		foulsThisSet = sFoulsThisSet;
 	}
 
 	
 	//GETTERS
-	private boolean getBreakShot () {
+	public boolean getBreakShot () {
 		EventLog.logEvent("player " + playerID + "'s breakShot " + breakShot);
 		return breakShot;
 	}
 	
-	private boolean getFinalShot () {
+	public boolean getFinalShot () {
 		EventLog.logEvent("player " + playerID + "'s finalShot " + finalShot);
 		return finalShot;
 	}
 	
-	private boolean getBallInHand () {
+	public boolean getBallInHand () {
 		EventLog.logEvent("player " + playerID + "'s ballInHand " + ballInHand);
 		return ballInHand;
 	}
 	
-	private int getbBllsAssigned () {
+	public int getBallsAssigned () {
 		EventLog.logEvent("player " + playerID + "'s ballsAssigned " + ballsAssigned);
 		return ballsAssigned;
 	}
 	
-	private int getPlayerID () {
+	public int getPlayerID () {
 		EventLog.logEvent("player has playerID " + playerID);
 		return playerID;
 	}
 	
-	private int getGamesWon() {
+	public int getGamesWon() {
 		EventLog.logEvent("player " + playerID + "has won " + gamesWon + " games");
 		return gamesWon;
 	}
 	
-	private int getShotsTakenThisGame() {
+	public int getShotsTakenThisGame() {
 		EventLog.logEvent("player " + playerID + "has taken " + shotsTakenThisGame + " shots this game");		
 		return shotsTakenThisGame;
 	}
 	
-	private int getShotsTakenThisSet() {
+	public int getShotsTakenThisSet() {
 		EventLog.logEvent("player " + playerID + "has taken " + shotsTakenThisSet + " shots this set");
 		return shotsTakenThisSet;
 	}
 	
-	private int getFoulsThisGame() {
+	public int getFoulsThisGame() {
 		EventLog.logEvent("player " + playerID + "has fouled " + foulsThisGame + " times this game");
 		return foulsThisGame;
 	}
 	
-	private int getFoulsThisSet() {
+	public int getFoulsThisSet() {
 		EventLog.logEvent("player " + playerID + "has fouled " + foulsThisSet + " times this set");
 		return foulsThisSet;
 	}

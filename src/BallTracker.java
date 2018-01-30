@@ -28,74 +28,7 @@ public class BallTracker {
 		}
 	}
 	
-	public void confirmShot() {
-		
-		//if ((playerOneTargetBalls == 0 || playerTwoTargetBalls == 0 ) && triangleBreak == false) {
-		//	assignBallTargets();
-		//}
-		
-		for (int i = 1; i < ballArray.length; i++) {		
-			if (ballArray[i].getBallToggled() == true) {
-				ballArray[i].setOnTable(false);
-				ballArray[i].setBallToggled(false);
-				EventLog.logEvent("ball " + i + "'s data has been set to pocketed");
-				GameSceneContent.ToggleButtonArray[i].setVisible(false);
-			}
-			
-			
-		}	
-		if (ballArray[0].getBallToggled() == true) {
-			GameSceneContent.ToggleButtonArray[0].isPressed = false;
-			GameSceneContent.ToggleButtonArray[0].setStyle("-fx-background-color: #0f770f");	
-		}
-		/*
-		for (int i = 0; i < toggleButtonArray.length; i++) {		
-			if (toggleButtonArray[i] == true) {
-				 if (i == 0 && triangleBreak == true) {
-					loseGame();
-									
-				} else if (i == 0) {
-					//if the cue ball went in
-					scratchShot();
-					
-				} else if (i == 8) {
-					//if the 8 ball went in
-					if (playerTurn == 1 && playerOneFinalShot == true) {
-						winGame();
-					} else if (playerTurn == 2 && playerTwoFinalShot == true) {
-						winGame();
-					} else if (playerTurn == 1 && playerOneFinalShot == false) {
-						loseGame();
-					} else if (playerTurn == 2 && playerTwoFinalShot == false) {
-						loseGame();
-					}					
-					
-				} else if (i < 8 && i > 0 && !(playerOneTargetBalls == 0 || playerTwoTargetBalls == 0 )) {
-					//if a solid went in
-					if (playerTurn == 1 && playerOneTargetBalls == 1) {
-						takeAnotherShot = true;
-					} else if (playerTurn == 2 && playerTwoTargetBalls == 1) {
-						takeAnotherShot = true;
-					} 
-					
-				} else if (i > 8) {
-					//if a stripe went in
-					if (playerTurn == 1 && playerOneTargetBalls == 2) {
-						takeAnotherShot = true;
-					} else if (playerTurn == 2 && playerTwoTargetBalls == 2) {
-						takeAnotherShot = true;
-					}
-				}
-			}
-		
-		
-		*/
-		
-	}
-	
-	
-	
-	
+
 	
 	public void setBreakShot(boolean i) {
 		EventLog.logEvent("breakShot set to" + i);
