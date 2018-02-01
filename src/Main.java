@@ -1,6 +1,6 @@
 
  /*===============================================
- *Billiards Score System - Enterprise v8		 *
+ *Billiards Score System - Enterprise v9		 *
  *coded by										 *
  *	Trevor Haggerty 	- cesismalon@gmail.com	 *
  *	Zachary Drummond 	- zdrummon@gmail.com	 *

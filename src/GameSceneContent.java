@@ -26,8 +26,7 @@ public class GameSceneContent {
 		
 		
 		for(int i = 1; i < 16; i++) {
-			ToggleButton toggleButtonInstance = new ToggleButton((buttonWidthBuffer * i) + ((i - 1) * (buttonWidth)), Game.currentWindowHeight / 2 - 200, "images/"+ i +"ball.png", i); 
-			EventLog.logEvent("button " + i + " is at " + (buttonWidthBuffer + ((i - 1) * buttonWidth)));
+			ToggleButton toggleButtonInstance = new ToggleButton((buttonWidthBuffer * i) + ((i - 1) * (buttonWidth)), Game.currentWindowHeight / 2 - 200, "images/" + i + "ball.png", i); 
 			ToggleButtonArray[i] = toggleButtonInstance;
 			ToggleButtonArray[i].generateToggleButton();
 			gameSceneLayout.getChildren().add(ToggleButtonArray[i]);

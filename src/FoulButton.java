@@ -25,31 +25,22 @@ public class FoulButton extends Button {
 		this.setStyle("-fx-background-color: #0f770f");	
 		
 		this.setOnAction(e -> {
-			//TODO fix delay timer and make the button show response
-			EventLog.logEvent("change button to yellow");	
 			this.setStyle("-fx-background-color: #ffff00");
-			//GameLogic.delayTimer(300);
 		});
 		
 		this.setOnMouseExited(ae ->{
-			EventLog.logEvent("change button to green");
 			this.setStyle("-fx-background-color: #0f770f");	
 		});
 		
 		this.setOnMouseEntered(be ->{
-			EventLog.logEvent("change button to dark green");
 			this.setStyle("-fx-background-color: #074407");
 		});
 		
 		this.setOnMousePressed(ce -> {
-			//TODO fix delay timer and make the button show response
-			EventLog.logEvent("change button to yellow");	
 			this.setStyle("-fx-background-color: #ffff00");
-			//GameLogic.delayTimer(300);
 		});
 		
 		this.setOnMouseReleased(de ->{
-			EventLog.logEvent("change button to green");
 			this.setStyle("-fx-background-color: #0f770f");	
 		});
 	

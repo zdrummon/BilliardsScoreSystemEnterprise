@@ -19,8 +19,7 @@ public class ToggleButton extends Button {
 	private int buttonHeight = 0;
 	
 	public void generateToggleButton () {
-		EventLog.logEvent("create ball with index " + ballIndex);
-		EventLog.logEvent("create button using " + buttonImageFile);	
+		EventLog.logEvent("create button for ball " + ballIndex + " at x = " + buttonX);
 		
 		Image buttonImage = new Image(getClass().getResourceAsStream(buttonImageFile));
 		this.setGraphic(new ImageView(buttonImage));
@@ -31,14 +30,12 @@ public class ToggleButton extends Button {
 		
 		this.setOnAction(e -> {
 			if (isPressed == true) {
-				EventLog.logEvent("deactive " + ballIndex + " ball button");
 				
 				this.setStyle("-fx-background-color: #0f770f");				
 				isPressed = false;
 				Game.gameLogic.ballTracker.ballArray[ballIndex].setBallToggled(false);
 				
 			} else {
-				EventLog.logEvent("activate " + ballIndex + " ball button");
 				
 				this.setStyle("-fx-background-color: #FFFF00");
 				isPressed = true;
@@ -48,14 +45,12 @@ public class ToggleButton extends Button {
 		
 		this.setOnMouseExited(ae ->{
 			if (isPressed == false)  {
-			EventLog.logEvent("change button to green");
 			this.setStyle("-fx-background-color: #0f770f");	
 			}
 		});
 		
 		this.setOnMouseEntered(be ->{
 			if (isPressed == false)  {
-			EventLog.logEvent("change button to dark green");
 			this.setStyle("-fx-background-color: #074407");
 			}
 		});

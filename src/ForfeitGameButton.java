@@ -26,28 +26,23 @@ public class ForfeitGameButton extends Button {
 		this.relocate(buttonX, buttonY);
 		this.setStyle("-fx-background-color: #0f770f");	
 		
-		this.setOnAction(e -> {
-			EventLog.logEvent("change button to yellow");	
+		this.setOnAction(e -> {	
 			this.setStyle("-fx-background-color: #ffff00");
 		});
 		
 		this.setOnMouseExited(ae ->{
-			EventLog.logEvent("change button to green");
 			this.setStyle("-fx-background-color: #0f770f");	
 		});
 		
 		this.setOnMouseEntered(be ->{
-			EventLog.logEvent("change button to dark green");
 			this.setStyle("-fx-background-color: #074407");
 		});
 		
 		this.setOnMousePressed(ce -> {
-			EventLog.logEvent("change button to yellow");	
 			this.setStyle("-fx-background-color: #ffff00");
 		});
 		
 		this.setOnMouseReleased(de ->{
-			EventLog.logEvent("change button to green");
 			this.setStyle("-fx-background-color: #0f770f");	
 			
 			forfeitGame();
