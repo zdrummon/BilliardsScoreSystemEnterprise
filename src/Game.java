@@ -1,53 +1,48 @@
-//this class creates the game window and applies the scene
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
+public class Game {
+	public Game(int oGameIndex) {
+		gameIndex = oGameIndex;
+	}
+	
+	private int gameIndex;
+	
+	//SETTERS
+	public void setGameIndex(int sGameIndex) {
+		EventLog.logEvent("gameIndex set to " + sGameIndex);
+		gameIndex = sGameIndex;
+	}
+	
+	//GETTERS
+	public int getGameIndex() { return gameIndex; }
+	
+	/*---TODO data
+	int gamesWon;
+	int shotsTakenThisGame;
+	int shotsTakenThisSet;
+	int foulsThisGame;
+	int foulsThisSet;
+	
+	defense shots this game
+	defense shots this set
+	miss shots this game
+	miss shots this set
 
-public class Game{
-	public Game() {}	
-	
-	//screen and window dimensions
-	public static GameLogic gameLogic = new GameLogic();
-	private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	private static int startWindowHeight = (int) screenSize.getHeight() / 2;
-	private static int startWindowWidth = (int) screenSize.getWidth() / 2;
-	public static int currentWindowHeight = startWindowHeight;
-	public static int currentWindowWidth = startWindowWidth;
-	
-	//window initial layout and source
-	private static StartSceneContent startSceneContent = new StartSceneContent(); 
-	public static Scene startScene = new Scene(startSceneContent.startSceneLayout, currentWindowWidth, currentWindowHeight);
-	public static Stage mainStage = new Stage();
-		
-	//build and display the main program window
-	public void makeMainStage() {
-		EventLog.logEvent("show window");	
-		
-		startSceneContent.populateScene();
-		
-		mainStage.setTitle(EventLog.programVersion);
-		mainStage.setResizable(true);
-		mainStage.setScene(startScene);
-		mainStage.show();
-		screenResize();
-	}
-	
-	public static void beginGameLogic() {
-		gameLogic.trackBalls();
-		gameLogic.createPlayers();
-		
-	}
-	
-	public static void screenResize() {
-		mainStage.widthProperty().addListener(ea -> {
-			currentWindowWidth = (int)mainStage.getWidth();
-			EventLog.logEvent("new screen width is " + currentWindowWidth);
-		});
-		
-		mainStage.heightProperty().addListener(ea -> {
-			currentWindowHeight = (int)mainStage.getHeight();
-			EventLog.logEvent("new screen height is " + currentWindowHeight);
-		});
-	}
+	---long term data
+	sets won
+	shots taken ever
+	defense shots ever
+	miss shots ever
+	fouls ever
+	times colors were stripes ever
+	times colors were solids ever
+	break shots taken ever
+	balls made on all break shots ever
+	balls pocketed ever
+	pocket preference
+		1 %
+		2 %
+		3 %
+		4 %
+		5 %
+		6 %
+	*/
 }

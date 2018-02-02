@@ -19,7 +19,7 @@ public class ToggleButton extends Button {
 	private int buttonHeight = 0;
 	
 	public void generateToggleButton () {
-		EventLog.logEvent("create button for ball " + ballIndex + " at x = " + buttonX);
+		EventLog.logEvent("ball button " + ballIndex + " created at x = " + buttonX);
 		
 		Image buttonImage = new Image(getClass().getResourceAsStream(buttonImageFile));
 		this.setGraphic(new ImageView(buttonImage));
@@ -33,13 +33,13 @@ public class ToggleButton extends Button {
 				
 				this.setStyle("-fx-background-color: #0f770f");				
 				isPressed = false;
-				Game.gameLogic.ballTracker.ballArray[ballIndex].setBallToggled(false);
+				GameWindow.coreLogic.ball[ballIndex].setBallToggled(false);
 				
 			} else {
 				
 				this.setStyle("-fx-background-color: #FFFF00");
 				isPressed = true;
-				Game.gameLogic.ballTracker.ballArray[ballIndex].setBallToggled(true);
+				GameWindow.coreLogic.ball[ballIndex].setBallToggled(true);
 			}
 		});
 		

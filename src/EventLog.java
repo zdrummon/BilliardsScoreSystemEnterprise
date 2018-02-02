@@ -10,7 +10,7 @@ public class EventLog {
 	private static SimpleDateFormat dateFormatter = new SimpleDateFormat(" dd-MM-yy' | 'hh:mm:ss");
 
 	//log variables
-	public static String programVersion = "Billiards Score System - Enterprise v9 \n\n";
+	public static String programVersion = "Billiards Score System - Enterprise v10 \n\n";
 	private static String logColumns = "   DATE   |   TIME   |  EVENT  |  LOG ITEM";
 	private static int logCounter = 0;
 

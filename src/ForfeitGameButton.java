@@ -1,7 +1,7 @@
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
-import java.util.Date;
+
 public class ForfeitGameButton extends Button {
 	public ForfeitGameButton(int x, int y, String bFile) {
 		buttonImageFile = bFile;
@@ -51,7 +51,7 @@ public class ForfeitGameButton extends Button {
 	
 	public void forfeitGame() {
 		EventLog.logEvent("close game");
-		Game.mainStage.close();
+		GameWindow.stage.close();
 	}
 	
 }

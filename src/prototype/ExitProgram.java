@@ -1,4 +1,8 @@
+package prototype;
+/*
 //this class creates the exit button
+import EventLog;
+import GameWindow;
 import javafx.scene.control.Button;
 
 public class ExitProgram{
@@ -12,8 +16,9 @@ public class ExitProgram{
 		exitButton.setOnAction(e -> {
 			EventLog.logEvent("end program");		
 			
-			Game.mainStage.close();
+			GameWindow.stage.close();
 			EventLog.endLog();	
 		});
 	}
 }
+*/

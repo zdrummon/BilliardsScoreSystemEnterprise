@@ -44,7 +44,7 @@ public class ConfirmShotButton extends Button {
 		
 		this.setOnMouseReleased(de ->{
 			this.setStyle("-fx-background-color: #0f770f");	
-			Game.gameLogic.confirmShot();
+			GameWindow.coreLogic.confirmShot();
 		});			
 	}	
 }

@@ -1,3 +1,8 @@
+package prototype;
+/*
+import Ball;
+import EventLog;
+
 public class BallTracker {
 	public BallTracker() {}
 	
@@ -7,11 +12,11 @@ public class BallTracker {
 	boolean playerOneFinalShot = false;
 	boolean playerTwoFinalShot = false;
 	
-	public BallData[] ballArray = new BallData[16];
+	public Ball[] ballArray = new Ball[16];
 	
 	public void createBalls() {
 		for(int i = 0; i < 16; i++) {
-			BallData ball = new BallData(i, 0, 0, true, false, false); 
+			Ball ball = new Ball(i, 0, 0, true, false, false); 
 			ballArray[i] = ball;
 		}
 	}
@@ -75,3 +80,4 @@ public class BallTracker {
 	}
 	
 }
+*/
