@@ -30,35 +30,52 @@ public class CoreLogic {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 	public void switchTurn() {			
-
-		if (turn == 0) {
-			turn++;
-			EventLog.logEvent("switch turn to player " + (turn + 1));
+		if (turn == 1) {
+			EventLog.logEvent("switch turn to player " + ++turn);
 		} else {
-			turn--;
-			EventLog.logEvent("switch turn to player " + (turn + 1));
+			EventLog.logEvent("switch turn to player " + --turn);
 		}
 	}
 	
 	public void takeAnotherShot( ) {
-		EventLog.logEvent("player " + (turn + 1) + " take another shot");
+		EventLog.logEvent("player " + turn + " take another shot");
 	}
 	
 	public void scratchShot() {
-		EventLog.logEvent("player " + (turn + 1) + " scratched the shot");
+		EventLog.logEvent("player " + turn + " scratched the shot");
 		switchTurn();
 	}
 	
+	//TODO make a game
 	public void confirmShot() {
+	
+		//TODO breakshot scenarios - 8 ball in - lose
+		//TODO breakshot scenarios - balls went in - another shot
+		//TODO breakshot scenarios - cue ball in - switch turn
+		//TODO breakshot scenarios - no balls went in - switch turn
+				
+		//TODO 
+		//TODO 
+		//TODO 
+		//TODO 
+		//TODO 
 		
+		
+		
+		if (GameWindow.coreLogic.ball[0].getBallToggled()) {
+			scratchShot();
+		}
+		
+		for(int i = 0; i < 16; i++) {
+			GameWindow.coreLogic.ball[i].setBallToggled(false);
+			GameSceneGUI.ToggleButtonArray[i].isPressed = false;
+			GameSceneGUI.ToggleButtonArray[i].setStyle("-fx-background-color: #0f770f");
+		}
+	}
+	
+	public void foul() {
+		switchTurn();
 	}
 	
 	public void resetGame() {
@@ -69,5 +86,8 @@ public class CoreLogic {
 		
 	}
 	
-
+	public void forfeit() {
+		EventLog.logEvent("close game");
+		GameWindow.stage.close();
+	}
 }

@@ -1,4 +1,3 @@
-//toggle button template
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
@@ -22,12 +21,12 @@ public class ToggleButton extends Button {
 		EventLog.logEvent("ball button " + ballIndex + " created at x = " + buttonX);
 		
 		Image buttonImage = new Image(getClass().getResourceAsStream(buttonImageFile));
-		this.setGraphic(new ImageView(buttonImage));
-		
+		this.setGraphic(new ImageView(buttonImage));	
 		this.setPrefSize(buttonWidth, buttonHeight);
 		this.relocate(buttonX, buttonY);
 		this.setStyle("-fx-background-color: #0f770f");	
 		
+		//button toggle behavior
 		this.setOnAction(e -> {
 			if (isPressed == true) {
 				
@@ -43,6 +42,7 @@ public class ToggleButton extends Button {
 			}
 		});
 		
+		//mouseover behavior
 		this.setOnMouseExited(ae ->{
 			if (isPressed == false)  {
 			this.setStyle("-fx-background-color: #0f770f");	

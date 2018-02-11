@@ -14,22 +14,17 @@ public class ConfirmShotButton extends Button {
 	private int buttonY;
 	private int buttonWidth = 10;
 	private int buttonHeight = 10;
-	private int buttonIndex = 0;
 	
 	public void generateConfirmShotButton ()  {
 		EventLog.logEvent("create button using " + buttonImageFile);	
 		
 		Image buttonImage = new Image(getClass().getResourceAsStream(buttonImageFile));
-		this.setGraphic(new ImageView(buttonImage));
-		
+		this.setGraphic(new ImageView(buttonImage));	
 		this.setPrefSize(buttonWidth, buttonHeight);
 		this.relocate(buttonX, buttonY);
 		this.setStyle("-fx-background-color: #0f770f");	
 		
-		this.setOnAction(e -> {
-			this.setStyle("-fx-background-color: #ffff00");
-		});
-		
+		//mouseover and click behavior
 		this.setOnMouseExited(ae ->{
 			this.setStyle("-fx-background-color: #0f770f");	
 		});
@@ -45,7 +40,11 @@ public class ConfirmShotButton extends Button {
 		this.setOnMouseReleased(de ->{
 			this.setStyle("-fx-background-color: #0f770f");	
 			GameWindow.coreLogic.confirmShot();
-		});			
+		});
+		
+		this.setOnAction(e -> {
+			this.setStyle("-fx-background-color: #ffff00");
+		});
 	}	
 }
 

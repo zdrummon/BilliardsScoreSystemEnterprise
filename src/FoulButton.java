@@ -19,15 +19,11 @@ public class FoulButton extends Button {
 		
 		Image buttonImage = new Image(getClass().getResourceAsStream(buttonImageFile));
 		this.setGraphic(new ImageView(buttonImage));
-		
 		this.setPrefSize(buttonWidth, buttonHeight);
 		this.relocate(buttonX, buttonY);
 		this.setStyle("-fx-background-color: #0f770f");	
 		
-		this.setOnAction(e -> {
-			this.setStyle("-fx-background-color: #ffff00");
-		});
-		
+		//mouseover and click behavior
 		this.setOnMouseExited(ae ->{
 			this.setStyle("-fx-background-color: #0f770f");	
 		});
@@ -42,8 +38,11 @@ public class FoulButton extends Button {
 		
 		this.setOnMouseReleased(de ->{
 			this.setStyle("-fx-background-color: #0f770f");	
+			GameWindow.coreLogic.foul();
 		});
-	
-	}
-	
+		
+		this.setOnAction(e -> {
+			this.setStyle("-fx-background-color: #ffff00");
+		});	
+	}	
 }

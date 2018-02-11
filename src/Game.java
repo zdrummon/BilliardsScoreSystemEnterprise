@@ -4,6 +4,7 @@ public class Game {
 	}
 	
 	private int gameIndex;
+	private int gameWon;
 	
 	//SETTERS
 	public void setGameIndex(int sGameIndex) {

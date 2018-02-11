@@ -1,7 +1,6 @@
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
-
 public class ForfeitGameButton extends Button {
 	public ForfeitGameButton(int x, int y, String bFile) {
 		buttonImageFile = bFile;
@@ -20,16 +19,12 @@ public class ForfeitGameButton extends Button {
 		EventLog.logEvent("create button using " + buttonImageFile);	
 		
 		Image buttonImage = new Image(getClass().getResourceAsStream(buttonImageFile));
-		this.setGraphic(new ImageView(buttonImage));
-		
+		this.setGraphic(new ImageView(buttonImage));		
 		this.setPrefSize(buttonWidth, buttonHeight);
 		this.relocate(buttonX, buttonY);
 		this.setStyle("-fx-background-color: #0f770f");	
 		
-		this.setOnAction(e -> {	
-			this.setStyle("-fx-background-color: #ffff00");
-		});
-		
+		//mouseover and click behavior
 		this.setOnMouseExited(ae ->{
 			this.setStyle("-fx-background-color: #0f770f");	
 		});
@@ -43,15 +38,12 @@ public class ForfeitGameButton extends Button {
 		});
 		
 		this.setOnMouseReleased(de ->{
-			this.setStyle("-fx-background-color: #0f770f");	
-			
-			forfeitGame();
+			this.setStyle("-fx-background-color: #0f770f");				
+			GameWindow.coreLogic.forfeit();
+		});
+		
+		this.setOnAction(e -> {	
+			this.setStyle("-fx-background-color: #ffff00");
 		});
 	}
-	
-	public void forfeitGame() {
-		EventLog.logEvent("close game");
-		GameWindow.stage.close();
-	}
-	
 }

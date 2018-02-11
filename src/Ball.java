@@ -28,7 +28,7 @@ public class Ball {
 	}
 
 	public void setBallToggled(boolean sBallToggled) {
-		EventLog.logEvent("ball " + ballIndex + "'s ballToggled set to " + sBallToggled); 
+//		EventLog.logEvent("ball " + ballIndex + "'s ballToggled set to " + sBallToggled); 
 		ballToggled = sBallToggled;
 	}
 	
