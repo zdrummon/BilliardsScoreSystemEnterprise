@@ -1,4 +1,8 @@
- # Billiards Score System - Enterprise </ br>
-Trevor Haggerty @ cesismalon@gmail.com  </ br>
-Zachary Drummond @ zdrummon@gmail.com  </ br>
+ # Billiards Score System - Enterprise
+ 
+ ### Trevor Haggerty 
+ cesismalon@gmail.com
+ 
+ ### Zachary Drummond 
+ zdrummon@gmail.com 
 
